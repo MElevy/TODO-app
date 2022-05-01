@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+  <title>TODO app</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+  <div id="header">
+    <h2>TODO App</h2>
+  </div>
+  <div id="todo-creator">
+    <form action="/create" method="get">
+      <input type="text" name="content" />
+      <input class="btn" type="submit" value="Create" />
+    </form>
+  </div>
+  <div id="todo-posts">
+    {% for todo_post in todo_posts %}
+    <div class="todo-post round">
+      <p class="post-content">{{ todo_post['content'] }}</p>
+      <a href="/delete?id={{ todo_post['id'] }}" class="btn bordered right">Delete</a>
+      <p class="datestamp">Created at: {{ todo_post['date-created'] }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</body>
