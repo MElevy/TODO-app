@@ -20,9 +20,9 @@ class App(Flask):
         post_content = request.args.get('content')
         now = datetime.now()
         date_created = f'{now.day}-{now.month}-{now.year} {now.hour}:{now.minute}:{now.second}'
-        id = randrange(1, 501)
+        id = randrange(1, 5001)
         while id in self.ids:
-            id = randrange(1, 501)
+            id = randrange(1, 5001)
         self.ids.append(id)
         print(self.ids)
 
@@ -48,5 +48,4 @@ class App(Flask):
             return f'<h2>Error</h2><p>id {id} is not a valid id.</p>'
         return redirect('/')
 
-if __name__ == '__main__':
-    App().run(host = '127.0.0.1', port = 5000)
+app = App()
